@@ -4,17 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedidos {
-    List<Pizzas> pizzasPorPedidos = new ArrayList();
     private int id;
+    static int lastId = 0;
+    List<Pizzas> pizzasPorPedidos = new ArrayList();
     private String cliente;
     private float totalPedido;
-    
-    public Pedidos() {}
 
-    public Pedidos(int id, String cliente, float totalPedido) {
-        this.id = id;
+    public Pedidos(String cliente) {
+        this.id = lastId;
+        lastId++;
         this.cliente = cliente;
-        this.totalPedido = totalPedido;
+//        this.pizzasPorPedidos = listaPizzas;
+        this.totalPedido = 0;
+        
+//        for(int i=0; i<listaPizzas.size(); i++) {;
+//            this.totalPedido += listaPizzas.get(i).preco;
+//        }
+    }
+    
+    public void addPizza(Pizzas pizza) {
+        this.pizzasPorPedidos.add(pizza);
+        this.totalPedido += pizza.preco;
     }
 
     public List<Pizzas> getPizzasPorPedidos() {
@@ -48,6 +58,4 @@ public class Pedidos {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
 }

@@ -7,12 +7,28 @@ public class Pizzaria {
 
     public static void main(String[] args) {
         DAOPizzas daoPizzas = new DAOPizzas();
+        DAOPedidos daoPedidos = new DAOPedidos();
         
-        daoPizzas.create(new Pizzas(1, "Queijo", "M", 30));
-        daoPizzas.create(new Pizzas(2, "Frango", "M", 34));
-        daoPizzas.create(new Pizzas(1, "Abacaxi", "M", 31));
+        SaborFrango pizza1 = new SaborFrango("P");
+        SaborQueijo pizza3 = new SaborQueijo("M");
+        SaborFrango pizza2 = new SaborFrango("G");
+        daoPizzas.create(pizza1);
+        daoPizzas.create(pizza3);
+        daoPizzas.create(pizza2);
         System.out.println(daoPizzas.listAll());
         
+
+
+//        CRIAR PEDIDO NOVO
+        Pedidos pedido1 = new Pedidos("Bob o construtor");
+        pedido1.addPizza(pizza2);
+        daoPedidos.create(pedido1);
+                
+        Pedidos pedido2 = new Pedidos("Bob Esponja"); 
+        pedido2.addPizza(pizza1);
+        daoPedidos.create(pedido2);
+        
+        System.out.println(daoPedidos.listAll());
         
     }
     

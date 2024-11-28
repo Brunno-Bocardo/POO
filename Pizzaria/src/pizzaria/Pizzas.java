@@ -1,18 +1,18 @@
 package pizzaria;
 
-public class Pizzas {
-    private int id;
-    private String sabor;
-    private String tamanho;
-    private float preco;
+public abstract class Pizzas {
+    protected int id;
+    protected String sabor;
+    protected String tamanho;
+    protected float preco;
 
-    public Pizzas() {}
-
-    public Pizzas(int id, String sabor, String tamanho, float preco) {
-        this.id = id;
-        this.sabor = sabor;
+//    public Pizzas() {}
+//
+    public Pizzas(String tamanho) {
+//        this.id = id;
+//        this.sabor = sabor;
         this.tamanho = tamanho;
-        this.preco = preco;
+//        this.preco = preco;
     }
 
     public String getSabor() {
@@ -46,10 +46,5 @@ public class Pizzas {
     public void setId(int id) {
         this.id = id;
     }
-
-    
-
-
-    
     
 }

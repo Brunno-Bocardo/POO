@@ -29,10 +29,10 @@ public class DAOPizzas {
         return false;
     }
     
-    public boolean delete(Pizzas pizza) {
-        Pizzas pizzaExiste = read(pizza.getId());
+    public boolean delete(int id) {
+        Pizzas pizzaExiste = read(id);
         if(pizzaExiste != null) {
-            databasePizzas.remove(pizza);
+            databasePizzas.remove(pizzaExiste);
             return true;
         }
         return false;
@@ -43,6 +43,6 @@ public class DAOPizzas {
         for(Pizzas p: databasePizzas) {
             report += (p.getId() + " | " + p.getTamanho() + " | " + p.getPreco() + " | " + p.getSabor() + "\n");
         }
-    return report;
+        return report;
     }
 }

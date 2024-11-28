@@ -36,11 +36,15 @@ public class DAOPedidos {
         return false;
     }
     
-//    public String listAll() {
-//        String report = "";
-//        for(Pizzas p: databasePizzas) {
-//            report += (p.getId() + " | " + p.getTamanho() + " | " + p.getPreco() + " | " + p.getSabor() + "\n");
-//        }
-//    return report;
-//    }
+    public String listAll() {
+        String report = "";
+        for(Pedidos p: databasePedidos) {
+            String pizzas = "";
+            for(int i=0; i<p.pizzasPorPedidos.size(); i++) {
+                pizzas += p.pizzasPorPedidos.get(i).sabor + "(" + p.pizzasPorPedidos.get(i).tamanho + ")" + "  ";
+            }
+            report += ("N" + p.getId() + " | Cliente: " + p.getCliente() + " \nTotal: R$" + p.getTotalPedido() + " \nPizzas: " + pizzas + "\n\n");
+        }
+        return report;
+    }
 }
