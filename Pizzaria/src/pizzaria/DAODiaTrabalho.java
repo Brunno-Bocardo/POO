@@ -19,33 +19,36 @@ public class DAODiaTrabalho {
         return null;
     }
     
-//    public boolean update(DiaTrabalho diaTrabalho) {
-//        Pedidos pedidoExiste = read(diaTrabalho.getId());
-//        if(pedidoExiste != null) {
-//            pedidoExiste.setCliente(diaTrabalho.getCliente());
-//            return true;
-//        }
-//        return false;
-//    }
-//    
-//    public boolean delete(Pedidos pedido) {
-//        Pedidos pedidoExiste = read(pedido.getId());
-//        if(pedidoExiste != null) {
-//            databasePedidos.remove(pedido);
-//            return true;
-//        }
-//        return false;
-//    }
-//    
-//    public String listAll() {
-//        String report = "";
-//        for(Pedidos p: databasePedidos) {
-//            String pizzas = "";
-//            for(int i=0; i<p.pizzasPorPedidos.size(); i++) {
-//                pizzas += p.pizzasPorPedidos.get(i).sabor + "(" + p.pizzasPorPedidos.get(i).tamanho + ")" + "  ";
+    public boolean update(DiaTrabalho diaTrabalho) {
+        DiaTrabalho diaTrabalhoExiste = read(diaTrabalho.getId());
+        if(diaTrabalhoExiste != null) {
+            diaTrabalhoExiste.setPedidosDoDia(diaTrabalho.getPedidosDoDia());
+            return true;
+        }
+        return false;
+    }
+
+    public boolean delete(DiaTrabalho diaTrabalho) {
+        DiaTrabalho diaTrabalhoExiste = read(diaTrabalho.getId());
+        if(diaTrabalhoExiste != null) {
+            databaseDiaTrabalho.remove(diaTrabalho);
+            return true;
+        }
+        return false;
+    }
+    
+//    MELHORAR ESSE PRINT Q TA TOSCO DEMAIS
+    public String listAll() {
+        String report = "";
+        int cont = 0;
+        for(DiaTrabalho dia: databaseDiaTrabalho) {
+//            String diaText = "";
+//            for(int i=0; i<dia.pedidosDoDia.size(); i++) {
+//                diaText += dia.pedidosDoDia.get(i).getTotalPedido() + "(" + p.pizzasPorPedidos.get(i).tamanho + ")" + "  ";
 //            }
-//            report += ("N" + p.getId() + " | Cliente: " + p.getCliente() + " \nTotal: R$" + p.getTotalPedido() + " \nPizzas: " + pizzas + "\n\n");
-//        }
-//        return report;
-//    }
+            report += ("DIA-" + dia.getId() + " \n" );
+//                    + "Pedidos: \n" + dia.pedidosDoDia.get(cont).+ " \nPizzas: " + pizzas + "\n\n");
+        }
+        return report;
+    }
 }

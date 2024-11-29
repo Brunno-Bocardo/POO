@@ -26,5 +26,11 @@ public class DiaTrabalho {
         this.id = id;
     }
     
-    
+    public List<Pedidos> getPedidosDoDia() {
+        return pedidosDoDia;
+    }
+
+    public void setPedidosDoDia(List<Pedidos> pedidosDoDia) {
+        this.pedidosDoDia = pedidosDoDia;
+    }
 }
