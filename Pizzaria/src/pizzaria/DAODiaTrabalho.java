@@ -37,18 +37,22 @@ public class DAODiaTrabalho {
         return false;
     }
     
-//    MELHORAR ESSE PRINT Q TA TOSCO DEMAIS
     public String listAll() {
-        String report = "";
-        int cont = 0;
-        for(DiaTrabalho dia: databaseDiaTrabalho) {
-//            String diaText = "";
-//            for(int i=0; i<dia.pedidosDoDia.size(); i++) {
-//                diaText += dia.pedidosDoDia.get(i).getTotalPedido() + "(" + p.pizzasPorPedidos.get(i).tamanho + ")" + "  ";
-//            }
-            report += ("DIA-" + dia.getId() + " \n" );
-//                    + "Pedidos: \n" + dia.pedidosDoDia.get(cont).+ " \nPizzas: " + pizzas + "\n\n");
+        StringBuilder report = new StringBuilder();
+        for (DiaTrabalho dia : databaseDiaTrabalho) {
+            float totalDia = 0;
+            int numeroPedidos = dia.getPedidosDoDia().size();
+
+            for (Pedidos pedido : dia.getPedidosDoDia()) {
+                totalDia += pedido.getTotalPedido();
+            }
+
+            report.append("===== DIA ").append(dia.getId()).append(" =====\n");
+            report.append("Total do Dia: R$ ").append(String.format("%.2f", totalDia)).append("\n");
+            report.append("Numero de Pedidos: ").append(numeroPedidos).append("\n");
+            report.append("------------------------\n");
         }
-        return report;
+        return report.toString();
     }
+
 }
