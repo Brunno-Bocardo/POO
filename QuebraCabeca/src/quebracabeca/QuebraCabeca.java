@@ -1,7 +1,6 @@
 package quebracabeca;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  *
@@ -10,15 +9,7 @@ import java.util.Scanner;
 public class QuebraCabeca {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        List<Peca> pecas = new ArrayList();
-        
-//        System.out.println("Digite um dos lados do tabuleiro (ESCOLHE 3 POR FAVOR)");
-//        int i = scanner.nextInt();
-//        scanner.nextLine();
-//        System.out.println("Digite o outro lado do tabuleiro (ESCOLHE 3 POR FAVOR)");
-//        int j = scanner.nextInt();
-//        scanner.nextLine();
+        List<Peca> pecas = new ArrayList();  
              
         Peca [][]tabuleiro = new Peca[3][3]; 
         
@@ -88,28 +79,17 @@ public class QuebraCabeca {
         
         
         for(int i=0; i<tabuleiro.length; i++){
-//            System.out.println(i);
-            for(int j=0; j<tabuleiro[i].length; j++){
-//                System.out.println(j);
-                int numPeca = 1;
-                for(Peca p:pecas) {
-                    boolean pecaAdicionada = p.encaixar(j, j, numPeca);
+            for(int j=0; j<tabuleiro.length; j++){
+                System.out.print("\n\n===== Analisando posicao: " + i + " - " + j + " =====\n");
+                for(int y=0; y<9; y++) {
+                    Peca peca = pecas.get(y);
+                    boolean pecaAdicionada = peca.encaixar(i, j, y + 1);
                     if(pecaAdicionada) {
-                        pecas.remove(p);
+                        break;
                     }
-                    numPeca++;
                 }
-//                System.out.print(tabuleiro[0][j]);
             }
-//            System.out.println(tabuleiro[i][0]);
         }
-
-        
-        
-        
-        
-        
-        
     }
     
 }

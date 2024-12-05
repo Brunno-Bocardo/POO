@@ -36,31 +36,38 @@ public class Peca {
     }
 
     public void setBordaCima(Borda bordaCima) {
-        if (this.bordaCima != null)
+        if (this.bordaCima != null) {
+            System.out.println("Voce nao pode alterar a borda de uma peca uma vez definida");
             return;
+        }
         this.bordaCima = bordaCima;
     }
 
     public void setBordaBaixo(Borda bordaBaixo) {
-        if (this.bordaBaixo != null)
+        if (this.bordaBaixo != null) {
+            System.out.println("Voce nao pode alterar a borda de uma peca uma vez definida");
             return;
+        }
         this.bordaBaixo = bordaBaixo;
     }
 
     public void setBordaEsquerda(Borda bordaEsquerda) {
-        if (this.bordaEsquerda != null)
+        if (this.bordaEsquerda != null) {
+            System.out.println("Voce nao pode alterar a borda de uma peca uma vez definida");
             return;
+        }
         this.bordaEsquerda = bordaEsquerda;
     }
 
     public void setBordaDireita(Borda bordaDireita) {
-        if (this.bordaDireita != null)
+        if (this.bordaDireita != null) {
+            System.out.println("Voce nao pode alterar a borda de uma peca uma vez definida");
             return;
+        }
         this.bordaDireita = bordaDireita;
     }
     
     public boolean encaixar(int p1, int p2, int numPeca) {
-//        System.out.println("Valor: " + p1 + p2);
         if (p1 == 0 && p2 == 0) {
             if(bordaCima.verificaBorda() && bordaEsquerda.verificaBorda()) {
                 System.out.println("Peca " + numPeca + " adicionada com sucesso na posicao 1");
@@ -116,7 +123,7 @@ public class Peca {
         }
         
         else if (p1 == 2 && p2 == 0) {
-            if(bordaEsquerda.verificaBorda() && bordaDireita.verificaBorda()) {
+            if(bordaEsquerda.verificaBorda() && bordaBaixo.verificaBorda()) {
                 System.out.println("Peca " + numPeca + " adicionada com sucesso na posicao 7");
                 return true;
             }
@@ -134,8 +141,13 @@ public class Peca {
         }
         
         else {
-            System.out.println("Peca " + numPeca + " adicionada com sucesso na posicao 9");
-            return true;
+            if(numPeca==9) {
+                System.out.println("Peca " + numPeca + " adicionada com sucesso na posicao 9");
+                return true;
+            } else {
+                return false;
+            }
+            
         }
         
         

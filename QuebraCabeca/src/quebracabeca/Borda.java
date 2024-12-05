@@ -21,11 +21,11 @@ public class Borda {
         return dir;
     }
 
-    public void setEsq(boolean esq) {
+    private void setEsq(boolean esq) {
         this.esq = esq;
     }
 
-    public void setDir(boolean dir) {
+    private void setDir(boolean dir) {
         this.dir = dir;
     }
     
